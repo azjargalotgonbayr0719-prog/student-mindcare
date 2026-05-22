@@ -18,11 +18,11 @@
     <div class="container">
         <h2>MindCare 💖</h2>
         <p>대학생 스트레스 해소 웹앱</p>
-        
+
         <div id="gauge-box"><div id="gauge"></div></div>
         <p>스트레스 지수: <span id="status-text">100%</span></p>
         <button onclick="decreaseStress()">스트레스 볼 터치 🔴</button>
-        
+
         <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
 
         <h3>🎯 현재 나의 상태별 맞춤 처方</h3>
@@ -42,7 +42,7 @@
                 document.getElementById('status-text').innerText = stress + "%";
                 let gauge = document.getElementById('gauge');
                 gauge.style.width = stress + "%";
-                
+
                 if(stress <= 40) gauge.style.background = "green";
                 else if(stress <= 70) gauge.style.background = "orange";
             }
@@ -58,10 +58,16 @@
         ];
 
         function filterSolution(selectedCategory) {
+            // 1. Сонгосон ангилалд тохирох зөвлөгөөнүүдийг шүүж авна
             const filtered = dummySolutions.filter(item => item.category === selectedCategory);
+            
+            // 2. Шүүсэн зөвлөгөөнүүдээс нэгийг нь random-оор сонгоно
+            const randomIndex = Math.floor(Math.random() * filtered.length);
+            const randomResult = filtered[randomIndex];
+            
+            // 3. Сонгогдсон солонгос текстийг дэлгэц дээр гаргана
             document.getElementById('solution-box').innerText = randomResult.text;
         }
     </script>
 </body>
 </html>
-
