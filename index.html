@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindCare - 스트레스 해소</title>
+    <title>MindCare - 스트레스 해소 및 솔루션</title>
     <style>
         body { font-family: sans-serif; text-align: center; background: #f0f2f5; padding: 20px; }
-        .container { background: white; max-width: 400px; margin: 0 auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .container { background: white; max-width: 450px; margin: 0 auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         #gauge-box { width: 100%; height: 30px; background: #eee; border-radius: 15px; margin: 20px 0; overflow: hidden; }
         #gauge { width: 100%; height: 100%; background: red; transition: all 0.3s; }
-        button { padding: 10px 20px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; background: #0070f3; color: white; }
+        button { padding: 10px 15px; font-size: 14px; border: none; border-radius: 6px; cursor: pointer; background: #0070f3; color: white; margin: 5px; }
+        .filter-btn { background: #4caf50; }
+        #solution-box { margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px; font-weight: bold; min-height: 40px; }
     </style>
 </head>
 <body>
@@ -19,8 +21,17 @@
         
         <div id="gauge-box"><div id="gauge"></div></div>
         <p>스트레스 지수: <span id="status-text">100%</span></p>
-        
         <button onclick="decreaseStress()">스트레스 볼 터치 🔴</button>
+        
+        <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+
+        <h3>🎯 현재 나의 상태별 맞춤 처方</h3>
+        <div>
+            <button class="filter-btn" onclick="filterSolution('학업')">📚 학업 스트레스</button>
+            <button class="filter-btn" onclick="filterSolution('휴식')">🛌 만성 피로</button>
+            <button class="filter-btn" onclick="filterSolution('멘탈')">🧠 불안/잡생각</button>
+        </div>
+        <div id="solution-box">상태 버튼을 클릭하면 맞춤 처방전이 나옵니다.</div>
     </div>
 
     <script>
@@ -35,6 +46,21 @@
                 if(stress <= 40) gauge.style.background = "green";
                 else if(stress <= 70) gauge.style.background = "orange";
             }
+        }
+
+        const dummySolutions = [
+            { category: '학업', text: "📝 План гаргаж, яг одоо 25 минут анхаарлаа төвлөрүүлээд 5 минут амраарай! (Pomodoro)" },
+            { category: '학업', text: "🏫 Сургуулийн зөвлөгөө өгөх төв эсвэл профессороосоо тусламж хүсэхээс бүү эмээгээрэй." },
+            { category: '휴식', text: "🛌 Өнөөдөр утсаа холдуулаад яг 7 цаг гүн нойрсож биеэ амраагаарай." },
+            { category: '휴식', text: "🏃‍♂️ Сургуулийн кампусаар 15 минут цэвэр агаарт алхах эсвэл хөнгөн гүйгээрэй." },
+            { category: '멘탈', text: "🧠 Гүнзгий амьсгаа 5 удаа авч, 'Би чадна, зүгээр дээ' гэж өөртөө хэлээрэй." },
+            { category: '멘탈', text: "🎵 Дуртай намуухан хөгжмөө сонсож, тархиа бүрэн амраах цаг гарга." }
+        ];
+
+        function filterSolution(selectedCategory) {
+            const filtered = dummySolutions.filter(item => item.category === selectedCategory);
+            const randomResult = filtered[Math.floor(Math.random() * filtered.length)];
+            document.getElementById('solution-box').innerText = randomResult.text;
         }
     </script>
 </body>
