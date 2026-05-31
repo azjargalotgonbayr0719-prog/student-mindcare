@@ -48,15 +48,14 @@
             }
         }
 
-        const dummySolutions = [
-            { category: '학업', text: "📝 План гаргаж, яг одоо 25 минут анхаарлаа төвлөрүүлээд 5 минут амраарай! (Pomodoro)" },
-            { category: '학업', text: "🏫 Сургуулийн зөвлөгөө өгөх төв эсвэл профессороосоо тусламж хүсэхээс бүү эмээгээрэй." },
-            { category: '휴식', text: "🛌 Өнөөдөр утсаа холдуулаад яг 7 цаг гүн нойрсож биеэ амраагаарай." },
-            { category: '휴식', text: "🏃‍♂️ Сургуулийн кампусаар 15 минут цэвэр агаарт алхах эсвэл хөнгөн гүйгээрэй." },
-            { category: '멘탈', text: "🧠 Гүнзгий амьсгаа 5 удаа авч, 'Би чадна, зүгээр дээ' гэж өөртөө хэлээрэй." },
-            { category: '멘탈', text: "🎵 Дуртай намуухан хөгжмөө сонсож, тархиа бүрэн амраах цаг гарга." }
+       const dummySolutions = [
+            { category: '학업', text: "📝 계획을 세우고 지금 바로 25분간 집중한 뒤 5분간 휴식해보세요! (뽀모도로 기법)" },
+            { category: '학업', text: "🏫 혼자 고민하지 말고 학교 상담센터나 교수님께 적극적으로 도움을 요청해보세요." },
+            { category: '휴식', text: "🛌 오늘은 스마트폰을 멀리하고 최소 7시간 이상 깊은 숙면을 취해보세요." },
+            { category: '휴식', text: "🏃‍♂️ 캠퍼스를 가볍게 15분 동안 산책하거나 맑은 공기를 마시며 조깅해보세요." },
+            { category: '멘탈', text: "🧠 심호흡을 5회 크게 하며 '나는 할 수 있다, 괜찮다'라고 스스로를 위로해보세요." },
+            { category: '멘탈', text: "🎵 좋아하는 잔잔한 음악을 들으며 뇌에 온전한 휴식 시간을 선물하세요." }
         ];
-
         function filterSolution(selectedCategory) {
             const filtered = dummySolutions.filter(item => item.category === selectedCategory);
             const randomResult = filtered[Math.floor(Math.random() * filtered.length)];
